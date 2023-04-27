@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import '@/assets/base.css';
 import axios from 'axios';
-import router from './router';
+//import router from './router';
 import * as Sentry from '@sentry/vue';
 import { UserDummy } from '@/types/User';
 
