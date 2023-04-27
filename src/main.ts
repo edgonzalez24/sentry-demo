@@ -4,19 +4,39 @@ import '@/assets/base.css';
 import axios from 'axios';
 import router from './router';
 import * as Sentry from '@sentry/vue';
+import type UserItem from '@/types/User';
 
+
+const user: UserItem = {
+  uid: '048',
+  name: ' Joe',
+  email: 'joe@fituapp.com',
+};
 
 const app = createApp(App);
 Sentry.init({
   app,
+  logErrors: true,
+  environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
+  release: __SENTRY_RELEASE__,
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracePropagationTargets: ['localhost', /^\//],
     }),
+    new Sentry.Replay(),
   ],
   // Performance Monitoring
   tracesSampleRate: import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE,
+  replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
+  replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
+});
+
+Sentry.setUser({
+  id: user.uid,
+  name: user.name,
+  email: user.email,
 });
 
 app.config.globalProperties.$http = axios;
