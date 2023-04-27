@@ -4,6 +4,7 @@ import { ref, computed, onMounted, inject } from "vue";
 import type Emoji from "@/types/Emoji";
 import type Entry from "@/types/Entry";
 import { userInjectionKey } from "@/injectionKeys";
+import UIcon from "@/components/UIcon.vue";
 
 const text = ref("");
 const emoji = ref<Emoji | null>(null);
@@ -51,11 +52,9 @@ const handleSubmit = () => {
       :placeholder="`New Journal Entry for ${user?.username || 'Anonymous'}`"
     ></textarea>
     <EmojiField v-model="emoji" />
-    <div class="entry-form-footer">
+    <div class="entry-form-footer items-center">
       <span>{{ charCount }} / {{ maxChars }}</span>
-      <button>Remember
-        <img src="@/assets/icons/arrow-circle-right.svg" alt="" width="20"> 
-      </button>
+      <button class="items-center">Remember <UIcon icon="arrow-circle-right" /></button>
     </div>
   </form>
 </template>

@@ -1,6 +1,9 @@
+<script setup lang="ts">
+  import UIcon from "@/components/UIcon.vue";
+</script>
 <template>
   <h1 class="text-6xl flex items-center">
-    <img src="@/assets/icons/file-notes.svg" alt="" width="80" class="mr-5">
+    <UIcon icon="file-notes" width="80" :classes="['mr-5','w-20']" />
     <strong> My Journal</strong>
   </h1>
 </template>
