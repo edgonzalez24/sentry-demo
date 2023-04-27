@@ -2,7 +2,7 @@
 import EmojiField from "@/components/EmojiField.vue";
 import { ref, computed, onMounted, inject } from "vue";
 import type Emoji from "@/types/Emoji";
-import type Entry from "@/types/Entry";
+// import type Entry from "@/types/Entry";
 import { userInjectionKey } from "@/injectionKeys";
 import UIcon from "@/components/UIcon.vue";
 
@@ -17,9 +17,9 @@ const textarea = ref<HTMLTextAreaElement | null>(null);
 
 onMounted(() => textarea.value?.focus());
 //Events
-const emit = defineEmits<{
-  (e: "@create", entry: Entry): void;
-}>();
+// const emit = defineEmits<{
+//   (e: "@create", entry: Entry): void;
+// }>();
 
 const handleTextInput = (e: Event) => {
   const textarea = e.target as HTMLTextAreaElement;
@@ -31,20 +31,21 @@ const handleTextInput = (e: Event) => {
 };
 
 const handleSubmit = () => {
-  emit("@create", {
-    body: text.value,
-    emoji: emoji.value,
-    createdAt: new Date(),
-    userId: 1,
-    id: Math.random(),
-  });
+  throw new Error('Sentry Error');
+  // emit("@create", {
+  //   body: text.value,
+  //   emoji: emoji.value,
+  //   createdAt: new Date(),
+  //   userId: 1,
+  //   id: Math.random(),
+  // });
 
-  text.value = "";
-  emoji.value = null;
+  // text.value = "";
+  // emoji.value = null;
 };
 </script>
 <template>
-  <form class="entry-form" @submit.prevent="submit()">
+  <form class="entry-form" @submit.prevent="handleSubmit">
     <textarea
       :value="text"
       ref="textarea"
