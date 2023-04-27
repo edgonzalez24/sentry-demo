@@ -19,7 +19,7 @@ defineProps<Props>();
     </div>
     <div class="entry-footer">
       <DateDisplay :date="new Date()" class="mr-2" />
-      |"
+      |
       <span class="ml-2">{{ user?.username || "Anonymous" }}</span>
     </div>
   </div>
