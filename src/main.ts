@@ -23,14 +23,20 @@ Sentry.init({
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      tracePropagationTargets: ['localhost', /^\//],
+      tracePropagationTargets: [
+        'localhost',
+        'benevolent-blini-9d78e2.netlify.app',
+        /^\//,
+      ],
     }),
     new Sentry.Replay(),
   ],
   // Performance Monitoring
   tracesSampleRate: import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE,
-  replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
-  replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
+  replaysSessionSampleRate: import.meta.env
+    .VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
+  replaysOnErrorSampleRate: import.meta.env
+    .VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
 });
 
 Sentry.setUser({
