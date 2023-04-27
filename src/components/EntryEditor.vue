@@ -44,7 +44,7 @@ const handleSubmit = () => {
 };
 </script>
 <template>
-  <form class="entry-form" @submit.prevent="handleSubmit">
+  <form class="entry-form" @submit.prevent="submit()">
     <textarea
       :value="text"
       ref="textarea"
