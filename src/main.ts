@@ -8,12 +8,18 @@ import { UserDummy } from '@/types/User';
 
 
 const user: UserDummy = {
-  uid: '121',
-  name: ' Lucas',
-  email: 'lc@fake.com'
+  uid: '110',
+  name: ' Ray',
+  email: 'ry@fake.com'
 };
 
 const app = createApp(App);
+
+console.log({
+  replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
+  replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
+  user: user
+})
 Sentry.init({
   app,
   logErrors: true,
@@ -33,10 +39,8 @@ Sentry.init({
   ],
   // Performance Monitoring
   tracesSampleRate: import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE,
-  replaysSessionSampleRate: import.meta.env
-    .VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
-  replaysOnErrorSampleRate: import.meta.env
-    .VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
+  replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
+  replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
 });
 
 Sentry.setUser({
