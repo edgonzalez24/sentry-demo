@@ -1,10 +1,10 @@
-export default interface User {
+export  interface User {
   id: number;
   username: string;
   settings: string[];
 }
 
-export default interface UserItem {
+export interface UserDummy {
   uid: string;
   email: string;
   name: string;

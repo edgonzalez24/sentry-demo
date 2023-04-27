@@ -12,7 +12,7 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to) {
     return {
       el: to.hash,
       behavior: 'smooth',

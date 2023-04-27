@@ -4,13 +4,13 @@ import '@/assets/base.css';
 import axios from 'axios';
 import router from './router';
 import * as Sentry from '@sentry/vue';
-import type UserItem from '@/types/User';
+import { UserDummy } from '@/types/User';
 
 
-const user: UserItem = {
+const user: UserDummy = {
   uid: '048',
   name: ' Joe',
-  email: 'joe@fituapp.com',
+  email: 'joe@fituapp.com'
 };
 
 const app = createApp(App);
@@ -18,7 +18,7 @@ Sentry.init({
   app,
   logErrors: true,
   environment: import.meta.env.VITE_SENTRY_ENVIRONMENT,
-  release: __SENTRY_RELEASE__,
+  release: import.meta.env.__SENTRY_RELEASE__,
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
     new Sentry.BrowserTracing({

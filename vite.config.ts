@@ -6,7 +6,6 @@ import dotenv from 'dotenv';
 import viteSentry from 'vite-plugin-sentry';
 
 dotenv.config();
-console.log(process.env.VITE_SENTRY_TOKEN);
 const viteSentryConfig = {
   authToken: process.env.VITE_SENTRY_TOKEN,
   org: 'personal-lab',
@@ -29,9 +28,12 @@ export default defineConfig({
     viteSentry(viteSentryConfig),
   ],
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    ],
   },
   build: {
     sourcemap: 'hidden',

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import EmojiField from "@/components/EmojiField.vue";
-import ArrowCircleRight from "@/assets/icons/arrow-circle-right.svg";
 import { ref, computed, onMounted, inject } from "vue";
 import type Emoji from "@/types/Emoji";
 import type Entry from "@/types/Entry";
@@ -54,7 +53,9 @@ const handleSubmit = () => {
     <EmojiField v-model="emoji" />
     <div class="entry-form-footer">
       <span>{{ charCount }} / {{ maxChars }}</span>
-      <button>Remember <ArrowCircleRight width="20" /></button>
+      <button>Remember
+        <img src="@/assets/icons/arrow-circle-right.svg" alt="" width="20"> 
+      </button>
     </div>
   </form>
 </template>

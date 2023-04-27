@@ -3,7 +3,7 @@ import TheHeader from "@/components/TheHeader.vue";
 import EntryEditor from "@/components/EntryEditor.vue";
 import EntryCard from "@/components/EntryCard.vue";
 import type Entry from "./types/Entry";
-import type User from "@/types/User";
+import { User } from "@/types/User";
 import { provide, reactive } from "vue";
 import { userInjectionKey } from "@/injectionKeys";
 const entries: Entry[] = reactive([]);
