@@ -2,24 +2,19 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import '@/assets/base.css';
 import axios from 'axios';
-//import router from './router';
+import router from './router';
 import * as Sentry from '@sentry/vue';
 import { UserDummy } from '@/types/User';
 
 
 const user: UserDummy = {
-  uid: '80',
-  name: ' Ralf',
-  email: 'rfl@fake.com'
+  uid: '200',
+  name: ' Mike',
+  email: 'mike@fake.com'
 };
 
 const app = createApp(App);
 
-console.log({
-  replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
-  replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
-  user: user
-})
 Sentry.init({
   app,
   logErrors: true,
@@ -27,18 +22,18 @@ Sentry.init({
   release: import.meta.env.__SENTRY_RELEASE__,
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
-    // new Sentry.BrowserTracing({
-    //   routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-    //   tracePropagationTargets: [
-    //     'localhost',
-    //     'benevolent-blini-9d78e2.netlify.app',
-    //     /^\//,
-    //   ],
-    // }),
+    new Sentry.BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      tracePropagationTargets: [
+        'localhost',
+        'benevolent-blini-9d78e2.netlify.app',
+        /^\//,
+      ],
+    }),
     new Sentry.Replay(),
   ],
   // Performance Monitoring
-  // tracesSampleRate: import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE,
+  tracesSampleRate: import.meta.env.VITE_SENTRY_TRACES_SAMPLE_RATE,
   replaysSessionSampleRate: import.meta.env.VITE_SENTRY_SESSION_REPLAY_SAMPLE_RATE,
   replaysOnErrorSampleRate: import.meta.env.VITE_SENTRY_REPLAY_ONERROR_SAMPLE_RATE,
 });
