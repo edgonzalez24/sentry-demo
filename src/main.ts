@@ -8,9 +8,9 @@ import { UserDummy } from '@/types/User';
 
 
 const user: UserDummy = {
-  uid: '200',
-  name: ' Mike',
-  email: 'mike@fake.com'
+  uid: '906',
+  name: ' Roger',
+  email: 'rog@fake.com'
 };
 
 const app = createApp(App);

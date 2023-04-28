@@ -31,6 +31,7 @@ const handleTextInput = (e: Event) => {
 };
 
 const handleSubmit = () => {
+  throw new Error('Error de prueba')
   emit("@create", {
     body: text.value,
     emoji: emoji.value,
